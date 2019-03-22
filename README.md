@@ -14,7 +14,7 @@ Capabilities:
 * Auto restart of service  or just auto send e-mail.  (not included in this version for now (are included on olders resulinux), but it is ready to go in the next),  
 * Much more
 
-Is really the fastest way to boot a linux machine without going out from sysvinit, and it is even faster than systemd, without the crap. 
+Is really the fastest way to boot a linux machine without going out from sysvinit, and it is even faster than systemd.
 
 Installation:
 =============
