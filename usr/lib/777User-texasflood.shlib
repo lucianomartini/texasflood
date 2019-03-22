@@ -67,9 +67,4 @@ sleep 0.1
 done 
 }
 
-superhdparm(){ 
-cd /proc/ide
-for ide in hd*; do
-hdparm $* /dev/$ide
-done
-}
+
