@@ -27,7 +27,9 @@ Important: Test first on a VM because that can break your system if you make a m
 4. After that just create a link ln -sf /sbin/texasflood-core to /etc/init.d/rc
 5. Edit the file /etc/texasflood.list pre-setting the default priorities for your programs. 
 6. Edit the file /etc/texasflood.conf carefully following the comments. 
-7. Reboot your machine and hope the best. 
+7. Reboot your machine and hope the best.
+
+Note: At the moment you will need to have net-tools (don't worry it is only used to bring up lo interface, it is being fixed in the next version) 
 
 
 
