@@ -1,0 +1,16 @@
+#!/bin/bash
+#KDE speed helper
+source /etc/texasflood.conf
+
+
+
+f_vmtouch(){
+      /usr/local/bin/vmtouch -t $1 &>/dev/null
+}
+
+cat /etc/texasflood.nightmare | grep -v "#" | while read library; do 
+     f_vmtouch "$library" & 
+done
+
+exit 0
+

@@ -1,0 +1,23 @@
+#!/bin/bash 
+#(c)2007 Luciano Andress Martini
+#Texas Flood Controller B 
+
+main(){
+function reniceall(){ 
+echo $1 $2
+for pr in "`ps -A | grep $2 | sed 's/[ ]\+/ /g'| cut -d" " -f2 `"; do
+renice $1 $pr &>/dev/null 
+done
+}
+
+while sleep 5; do 
+ grep -v '#' /etc/texasflood.list | 
+ while read line; do 
+  sleep 1
+  reniceall $(echo $line | cut -d' ' -f2) $(echo $line | cut -d' ' -f1) &>/dev/null
+ done 
+done
+}
+
+main&
+

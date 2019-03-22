@@ -1,0 +1,75 @@
+#Biblioteca Texas Flood, por Luciano Andress Martini(777User)
+
+export NORMAL='\e[0m' # No Color
+export WHITE='\e[1;37m'
+export BLACK='\e[0;30m'
+export BLUE='\e[0;34m'
+export LIGHT_BLUE='\e[1;34m'
+export GREEN='\e[0;32m'
+export LIGHT_GREEN='\e[1;32m'
+export CYAN='\e[0;36m'
+export LIGHT_CYAN='\e[1;36m'
+export RED='\e[0;31m'
+export LIGHT_RED='\e[1;31m'
+export PURPLE='\e[0;35m'
+export LIGHT_PURPLE='\e[1;35m'
+export BROWN='\e[0;33m'
+export YELLOW='\e[1;33m'
+export GRAY='\e[0;30m'
+export LIGHT_GRAY='\e[0;37m'
+
+reniceme(){
+renice $1 $PPID 
+}
+
+reniceall(){ 
+for pr in "`ps -A | grep $2 | sed 's/[ ]\+/ /g'| cut -d" " -f2 `"; do
+echo "Balanceando prioridades para $2..." 
+renice $1 $pr 2>/dev/null 
+done
+}
+
+showpid(){ 
+#Mostra os pids de um processo pelo nome
+#Uso: showpid processo
+for pr in "`ps -A | grep $1 | sed 's/[ ]\+/ /g'| cut -d" " -f2 `"; do
+echo $pr 
+done
+}
+
+wait_for_kill(){
+while ps -A | grep $1; do 
+sleep 0.1
+done 
+}
+
+wait_for(){
+cx=0
+if [ "$2" != "" ]; then 
+while ! ps -A | grep $1 &>/dev/null; do 
+cx="$((1+$cx))"
+[ "$cx" -gt "$2" ] && echo "Time over, please configure the right process on wait_process variable at /etc/texasflood.conf..." && return 0 
+sleep 1
+done 
+echo Ok. 
+else
+while ! ps -A | grep $1 &>/dev/null; do 
+sleep 0.1
+done 
+echo "Ok." 
+fi
+
+}
+
+wait_for_event(){
+while ! $*; do 
+sleep 0.1
+done 
+}
+
+superhdparm(){ 
+cd /proc/ide
+for ide in hd*; do
+hdparm $* /dev/$ide
+done
+}

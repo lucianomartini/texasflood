@@ -1,0 +1,8 @@
+kdm -7
+udev 20
+plasma-desktop -7
+kwin -7
+chromium -8
+gdm -7
+firefox -8
+iceweasel -8

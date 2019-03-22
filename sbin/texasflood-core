@@ -1,0 +1,103 @@
+#!/bin/bash
+#TexasFlood Luciano Andress Martini (c) 2007-2016
+#Version: 15664866231
+#This software is under GPLv2 license. 
+#Free for use, study, or modify. 
+#Enable debug:
+#set -x
+
+
+export PATH="$PATH:/sbin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+source /etc/texasflood.conf
+source /usr/lib/777User-texasflood.shlib
+shopt -s extglob
+set -a
+
+printf "${BLUE}"
+
+if [ "$1" == "S" ]; then
+        clear
+	echo "TexasFlood - (c) 2006-2016 Luciano Andress Martini "
+        echo "Release code: 15664866231" 
+        echo
+fi 
+
+
+mount -o remount,rw none /
+export RUNLEVEL=$(runlevel | cut -d' ' -f2)
+ifconfig lo 127.0.0.1 up 
+cd /etc/rc${1}.d/ 
+#echo >/var/log/texasflood.services
+
+
+txservice(){
+       case $1 in 
+       		S*) 
+                  $PWD/$1 start  &>>/var/log/texasflood.services
+                ;;
+       		K*) 
+                  $PWD/$1 stop  &>/dev/null
+                ;;
+                *)
+                  $PWD/$w start &>>/var/log/texasflood.services
+                ;;
+       esac
+}
+
+txrc(){
+ls --ignore=README | cut -c2,3 | uniq | while read i; do
+       [ "$i" -lt "10" ] && v="0$i" || v="$i"
+       for f in ?"${i}"*; do
+           [ "$server" = "0" ] && case $f in $lazy_services) continue ;; esac
+           echo -n "$f "
+   	   txservice $f &
+       done 
+      wait 
+done
+}
+
+
+
+echo "Texas Flood RC -> Reading Runlevel $1 in Parallel"
+
+echo -n "Found: "
+txrc $1 
+        
+
+printf ${NORMAL}
+echo
+echo
+
+
+case $1 in 
+S) 	
+       echo "Starting Texas Flood Helpers..."
+       echo "Loading Texas Flood Process Balancer. "  
+        /sbin/texasflood-ctlb&
+       if [ "$nightmare" = "1" ]; then 
+       	echo "Loading Texas Flood Nightmare, Powered by Hoytech Vmtouch ..." 
+       	/sbin/texasflood-nightmare
+       fi
+       echo 
+;;
+
+1|2|3|4|5)
+       echo "Waiting for ${wait_process} until ${wait_limit} seconds..."
+       [ "$server" = "0" ] && wait_for ${wait_process} ${wait_limit}
+       echo 
+
+       printf ${BLUE}
+       echo "Running Additional Lazy Services..."
+       for p in /etc/rcS.d/*; do
+             lazy=$(file $p | rev | cut -d' ' -f1 | rev)
+             [ "$server" = "0" ] && case $lazy in $lazy_services) nice -n ${lazy_level} $lazy start ;; esac
+       done
+       for p in /etc/rc${1}.d/*; do
+             lazy=$(file $p | rev | cut -d' ' -f1 | rev)
+             [ "$server" = "0" ] && case $lazy in $lazy_services) nice -n ${lazy_level} $lazy start ;; esac
+       done
+;;
+
+esac
+
+

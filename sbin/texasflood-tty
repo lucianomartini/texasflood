@@ -1,0 +1,17 @@
+#!/bin/bash
+
+doit(){ 
+export hostname="$(</etc/hostname)" 
+while : ; do 
+getty 9600 $1 
+done 
+}
+
+case "$1" in tty*) 
+doit $1&
+
+;;
+*) echo "Usage texasflood-tty tty_number, example: texasflood-tty tty3" 
+;; 
+esac
+ 
