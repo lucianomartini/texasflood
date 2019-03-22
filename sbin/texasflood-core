@@ -6,6 +6,9 @@
 #Enable debug:
 #set -x
 
+#This code was writed a long time ago, please don't laugh, believe me it works, and it is faster in practice.
+#If you have suggestions please improve it. 
+
 
 export PATH="$PATH:/sbin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 source /etc/texasflood.conf
@@ -25,7 +28,11 @@ fi
 
 mount -o remount,rw none /
 export RUNLEVEL=$(runlevel | cut -d' ' -f2)
+
+#2019 comment: ifconfig are you sure someone still uses this? 
 ifconfig lo 127.0.0.1 up 
+
+#2019 comment: are the distros still supporting this? 
 cd /etc/rc${1}.d/ 
 #echo >/var/log/texasflood.services
 
@@ -45,7 +52,7 @@ txservice(){
 }
 
 txrc(){
-#IFS= while -r read i -- please fix me. 
+#2019 commentary- IFS= while -r read i isnt? -- please fix me, README what? who uses i for doing this?
 ls --ignore=README | cut -c2,3 | uniq | while read i; do
        [ "$i" -lt "10" ] && v="0$i" || v="$i"
        for f in ?"${i}"*; do
