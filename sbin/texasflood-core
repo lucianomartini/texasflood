@@ -45,6 +45,7 @@ txservice(){
 }
 
 txrc(){
+#IFS= while -r read i -- please fix me. 
 ls --ignore=README | cut -c2,3 | uniq | while read i; do
        [ "$i" -lt "10" ] && v="0$i" || v="$i"
        for f in ?"${i}"*; do
