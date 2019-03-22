@@ -1,6 +1,6 @@
-# texasflood for sysvinit - the first parallel boot in the World. 
+# texasflood init system - the first parallel boot in the World. 
 
-SysVinit TexasFlood, was probably the first init system with parallel boot and much more like services auto-maintenance, priority balancing, but was only available for the brazilian distro "Resulinux", now free for everybody on github.
+SysVinit TexasFlood, was probably the first init system (first released in 2005 on Brazilian Distro Resulinux) with parallel boot and much more like services auto-maintenance, priority balancing, but was only available for the brazilian distro "Resulinux". The "plugin" is still today very nice, now free for everybody on github. 
 
 Capabilities:
 =============
