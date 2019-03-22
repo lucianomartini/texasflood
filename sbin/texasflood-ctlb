@@ -1,6 +1,7 @@
 #!/bin/bash 
 #(c)2007 Luciano Andress Martini
 #Texas Flood Controller B 
+#This programs keep in memory and renice your programs according to the list in /etc/texasflood.list
 
 main(){
 function reniceall(){ 
