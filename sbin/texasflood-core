@@ -29,10 +29,11 @@ fi
 mount -o remount,rw none /
 export RUNLEVEL=$(runlevel | cut -d' ' -f2)
 
-#2019 comment: ifconfig are you sure someone still uses this? 
+#FIXME
+#ifconfig are not widely used anymore... 
 ifconfig lo 127.0.0.1 up 
 
-#2019 comment: are the distros still supporting this? 
+#FIXME: are the distros still supporting this? 
 cd /etc/rc${1}.d/ 
 #echo >/var/log/texasflood.services
 
@@ -52,7 +53,7 @@ txservice(){
 }
 
 txrc(){
-#2019 commentary- IFS= while -r read i isnt? -- please fix me, README what? who uses i for doing this?
+#FIXME IFS= while -r read i isnt? -- please fix me, variable name is ugly ($i)
 ls --ignore=README | cut -c2,3 | uniq | while read i; do
        [ "$i" -lt "10" ] && v="0$i" || v="$i"
        for f in ?"${i}"*; do
