@@ -5,14 +5,14 @@ SysVinit TexasFlood, was probably the first init system (first released in 2005 
 Capabilities:
 =============
 
--Easy configuration if compared to systemd
--Fully sysvinit compatible, it uses sysvinit the core init. 
--Fix the priorities (auto renice) for the programs that are important for you.
--Parallel Services Loading based on the script name number, put the same number to load in parallel.
+*Fully sysvinit compatible, it uses sysvinit the core init. 
+*Easy configuration if compared to systemd
+*Fix the priorities (auto renice) for the programs that are important for you.
+*Parallel Services Loading based on the script name number, put the same number to load in parallel.
    S25-apache S25-postgresql - It will load at same time. 
    S26-mysql - It will wait for apache and postgresql to become loaded 
--Auto restart of service  or just auto send e-mail.  (not included in this version for now (are included on olders resulinux), but it is ready to go in the next),  
--Much more
+*Auto restart of service  or just auto send e-mail.  (not included in this version for now (are included on olders resulinux), but it is ready to go in the next),  
+*Much more
 
 Is really the fastest way to boot a linux machine without going out from sysvinit, and it is even faster than systemd, without the crap. 
 
