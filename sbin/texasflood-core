@@ -7,6 +7,7 @@
 #set -x
 
 #This program replaces rc script used by sysvinit. 
+#It must be called in inittab just like rc, or linked to rc path. 
 
 #This code was writed a long time ago, please don't laugh, believe me it works, and it is faster in practice.
 #If you have suggestions please improve it. 
