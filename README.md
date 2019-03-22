@@ -5,7 +5,7 @@ SysVinit TexasFlood, was probably the first init system (first released in 2005 
 Capabilities:
 =============
 
-* Fully sysvinit compatible, it uses sysvinit the core init. 
+* Full sysvinit compatible, as it uses sysvinit as the core init. 
 * Easy configuration if compared to systemd
 * Fix the priorities (auto renice) for the programs that are important for you.
 * Parallel Services Loading based on the script name number, put the same number to load in parallel.
