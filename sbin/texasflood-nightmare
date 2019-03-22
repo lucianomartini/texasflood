@@ -1,5 +1,8 @@
 #!/bin/bash
 #KDE speed helper
+
+#If you are using KDE or a slow environment, this can improve the speed a few seconds... 
+#vmtouch must be installed in your system to get this working. 
 source /etc/texasflood.conf
 
 
