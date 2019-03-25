@@ -7,7 +7,7 @@
 #set -x
 
 #DESCRIPTION: 
-#Texas Flood is a extremely simple script, with extremely big results in practice.
+#Texas Flood is a extremely simple script, with extremely big results in practice. Sysvinit binary is required for this to work. 
 #It just starts services in parallel, and for home computers (if server mode disabled), it start some services, only at end
 #of the whole boot in sequential, giving at end a extremely fast boot experience. 
 #For servers (server =1) it is the opposite, running in a more standard way, not trying to do things, that is not very important
