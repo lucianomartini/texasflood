@@ -1,8 +1,10 @@
-# texasflood for sysvinit (ALFA) - the first parallel boot for Linux in the World. 
+# texasflood for sysvinit - the first parallel boot for Linux in the World. 
 
 SysVinit TexasFlood is a extremely simple shell script that was probably the first init system (first released in 2005 on Brazilian Distro Resulinux) with parallel boot and much more like services auto-maintenance, priority balancing (it can fix the process priorities for every boot), but was only available for the brazilian distro "Resulinux". The "plugin" is still today very nice, now free for everybody on github. 
 
 Note: For better results, we recommend Devuan GNU/Linux (Debian without Systemd), or Debian GNU/Linux with sysvinit-core package installed (apt install sysvinit-core)
+
+This is still in experimental state (ALFA), because it was made for resulinux, and now is being adapted for other distros compatibility. 
 
 Capabilities:
 =============
