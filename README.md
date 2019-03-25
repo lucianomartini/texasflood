@@ -21,7 +21,7 @@ Installation:
 
 Important: Test first on a VM because that can break your system if you make a mistake, or if your distro are not fully compatible.
 
-1. To use texasflood you must have SysVinit installed.  (for debian this means apt install sysvinit-core) 
+1. To use texasflood you must have SysVinit installed.  (for debian this means apt install sysvinit-core, we recommend devuan) 
 2. After the clone, copy all this files to / in the right paths. For example the files that you see in texasflood/sbin, must be in /sbin.
 3. Then move your /etc/init.d/rc to /etc/init.d/rc-backup (this can depends on your distro). 
 4. After that just create a link ln -sf /sbin/texasflood-core to /etc/init.d/rc
