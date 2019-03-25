@@ -1,5 +1,5 @@
 #!/bin/bash
-#not used in the sysvinit version for while. 
+#not used in the sysvinit version for while or maybe never. 
 
 doit(){ 
 export hostname="$(</etc/hostname)" 
