@@ -10,6 +10,8 @@
 #Texas Flood is a extremely simple script, with extremely big results in practice.
 #It just starts services in parallel, and for home computers (if server mode disabled), it start some services, only at end
 #of the whole boot in sequential, giving at end a extremely fast boot experience. 
+#For servers (server =1) it is the opposite, running in a more standard way, not trying to do things, that is not very important
+#in that environments. 
 #Read /etc/texasflood.conf and /etc/texasflood.list for knowing more about the potentials, maybe not visible at a first look
 #to this code. 
 
