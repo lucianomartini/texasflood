@@ -1,4 +1,5 @@
 #!/bin/bash
+#not used in the sysvinit version for while. 
 
 doit(){ 
 export hostname="$(</etc/hostname)" 
