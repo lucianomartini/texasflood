@@ -6,8 +6,14 @@
 #Enable debug:
 #set -x
 
-#This program replaces rc script used by sysvinit. 
-#It must be called in inittab just like rc, or linked to rc path. 
+#DESCRIPTION: 
+#Texas Flood is a extremely simple script, with extremely big results in practice.
+#It just starts services in parallel, and for home computers (if server mode disable), it start some services, only at end
+#of the whole boot in sequential, giving at end a extremely fast boot experience. 
+
+#The dependecies are configured by the services names. S01, S01, will be loaded first in parallel, then the S02s, S03s, etc. 
+
+#This file must replace rc in inittab, or linked to rc path. 
 
 #This code was writed a long time ago, please don't laugh, believe me it works, and it is faster in practice.
 #If you have suggestions please improve it. 
