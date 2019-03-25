@@ -42,8 +42,7 @@ fi
 mount -o remount,rw none /
 export RUNLEVEL=$(runlevel | cut -d' ' -f2)
 
-#FIXME
-#ifconfig are not widely used anymore... 
+#ifconfig are not widely used anymore... but still present at devuan, so not a problem for a while, but please FIXME 
 ifconfig lo 127.0.0.1 up 
 
 #FIXME: are sysvinit distros still supporting this? - looks like yes for devuan for example. 
